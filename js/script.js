@@ -1,5 +1,5 @@
 let appData = {
-  config: "все цифры в рублях",
+  config: "all prices in dollars",
   budget: 0,
   data: [],
   expenses: {},
@@ -79,26 +79,26 @@ startBtn.addEventListener("click", function () {
   appData.optionalIncome = optiIncome.split(", ");
 
   monthSavingsValue.textContent =
-    ((dopDohod * procent) / 100 / 12).toFixed(1) + " ₽";
-  yearSavingsValue.textContent = ((dopDohod * procent) / 100).toFixed(1) + " ₽";
+    ((dopDohod * procent) / 100 / 12).toFixed(1) + " $";
+  yearSavingsValue.textContent = ((dopDohod * procent) / 100).toFixed(1) + " $";
   appData.savingsValue = dopDohod;
   appData.savingsPercent = procent;
 
-  if (monPerD <= 800 && monPerD > 0) {
-    levelValue.textContent = "Низкий";
-    appData.lvlValue = "Низкий";
-  } else if (monPerD > 800 && monPerD <= 2500) {
-    levelValue.textContent = "Средний";
-    appData.lvlValue = "Средний";
-  } else if (monPerD > 2500) {
-    levelValue.textContent = "Высокий";
-    appData.lvlValue = "Высокий";
+  if (monPerD <= 50 && monPerD > 0) {
+    levelValue.textContent = "Low";
+    appData.lvlValue = "Low";
+  } else if (monPerD > 50 && monPerD <= 100) {
+    levelValue.textContent = "Medium";
+    appData.lvlValue = "Medium";
+  } else if (monPerD > 100) {
+    levelValue.textContent = "High";
+    appData.lvlValue = "High";
   } else {
-    levelValue.textContent = "Введите бюджет и обязательные расходы";
+    levelValue.textContent = "Enter budget and required expenses";
   }
 
-  budgetValue.textContent = money.toFixed() + " ₽";
-  incomeValue.textContent = dopDohod + " ₽";
+  budgetValue.textContent = money.toFixed() + " $";
+  incomeValue.textContent = dopDohod + " $";
 
   yearValue.value = new Date(Date.parse(time)).getFullYear();
   dayValue.value = new Date(Date.parse(time)).getDate();
@@ -122,7 +122,7 @@ greenDob.addEventListener("click", function () {
   }
   this[type + i].classList.add("expenses-item");
   this[type + i].type = "text";
-  this[type + i].placeholder = "Наименование";
+  this[type + i].placeholder = "Name";
   dopPolya.appendChild(this[type + i]);
 
   let type1 = "createdValue";
@@ -160,7 +160,7 @@ expensesBtn.addEventListener("click", function () {
       i -= 1;
     }
   }
-  expensesValue.textContent = sum + " ₽";
+  expensesValue.textContent = sum + " $";
 });
 
 optionalExpensesBtn.addEventListener("click", function () {
@@ -170,7 +170,7 @@ optionalExpensesBtn.addEventListener("click", function () {
     optSum = optSum + +opt;
     appData.optionalExpenses[i] = opt;
   }
-  optionalExpensesValue.textContent = optSum + " ₽";
+  optionalExpensesValue.textContent = optSum + " $";
 });
 
 for (let i = 0; i < expensesItem.length; i++) {
@@ -185,7 +185,7 @@ countBtn.addEventListener("click", function () {
     let exN = expensesItem[++i].value;
     sumEx += +exN;
     dayBudgetValue.textContent =
-      ((+typeBudjet.value - sumEx) / 30).toFixed(1) + " ₽";
+      ((+typeBudjet.value - sumEx) / 30).toFixed(1) + " $";
     appData.moneyPerDay = ((+typeBudjet.value - sumEx) / 30).toFixed(1);
   }
 });
